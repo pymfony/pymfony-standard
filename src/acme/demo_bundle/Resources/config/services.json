@@ -1,0 +1,21 @@
+{
+    "services":
+    {
+        "acme.demo.listener":
+        {
+            "class": "acme.demo_bundle.listener.ControllerListener",
+            "arguments":
+            [
+                "@service_container"
+            ],
+            "tags":
+            [
+                {
+                    "name": "kernel.event_listener",
+                    "event": "cli_kernel.request",
+                    "method": "onKernelRequest"
+                }
+            ]
+        }
+    }
+}

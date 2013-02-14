@@ -1,0 +1,10 @@
+#!/bin/sh
+
+__DIR__="$(realpath "$(dirname "$0")")";
+AUTOLOADER="$__DIR__/../bin/autoloader.sh";
+
+
+export PYTHONPATH="$("$AUTOLOADER"):$PYTHONPATH";
+
+# Execute the application
+python "$__DIR__/console.py" $@;
