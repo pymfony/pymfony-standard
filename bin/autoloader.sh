@@ -14,7 +14,7 @@ VENDOR_DIR="$LIB_DIR/vendor";
 # install the Pymfony framework
 VENDOR_NAME="alquerci";
 PROJECT_NAME="pymfony";
-PROJECT_VENSION="v2.2.0-BETA2-r0";
+PROJECT_VENSION="v2.2.0-BETA2-r1";
 PROJECT_REPOSITORY="http://github.com/alquerci/pymfony.git";
 PROJECT_SRC="src"; # directory on relative path to the project must not contains ..
 
