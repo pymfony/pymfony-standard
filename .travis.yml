@@ -6,11 +6,11 @@ python:
     - "3.2"
     - "3.3"
 
-install:
-    - pip install . -r requirements.txt
+before_script:
+    - curl -s https://raw.github.com/pypa/virtualenv/master/virtualenv.py | python - -q vendor
+    - vendor/bin/pip install -q -r requirements.txt .
 
 script:
-    - app/console
     - app/console hello Fabien
 
 notifications:
