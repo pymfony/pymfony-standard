@@ -1,0 +1,3 @@
+include LICENSE *.md *.txt *.in app/*.py app/console
+recursive-include app/Resources *
+recursive-include src */test/test*.py

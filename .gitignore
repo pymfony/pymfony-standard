@@ -11,12 +11,14 @@ build
 eggs
 parts
 var
+bin
 sdist
 develop-eggs
 .installed.cfg
 lib
 lib64
 __pycache__
+MANIFEST
 
 # Installer logs
 pip-log.txt
@@ -33,12 +35,12 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+.settings/
 
-.*
-!.gitignore
 
+# Pymfony
 /web/bundles/
 /app/cache/*
 /app/logs/*
-/build/
 /vendor/
+/virtualenv.py

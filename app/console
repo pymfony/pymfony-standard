@@ -1,10 +1,36 @@
-#!/bin/sh
+#!python
+# -*- coding: utf-8 -*-
 
-__DIR__="$(realpath "$(dirname "$0")")";
-AUTOLOADER="$__DIR__/../bin/autoloader.sh";
+import sys;
+import os;
 
+def require(pyfile):
+    f = open(pyfile);
+    code = compile(f.read(), pyfile, 'exec');
+    f.close();
+    exec(code, dict(__file__=pyfile));
 
-export PYTHONPATH="$("$AUTOLOADER"):$PYTHONPATH";
+require(os.path.dirname(__file__)+"/../vendor/bin/activate_this.py");
+require(os.path.dirname(__file__)+"/app_kernel.py");
 
-# Execute the application
-python "$__DIR__/console.py" $@;
+from app_kernel import AppKernel;
+from pymfony.component.console import Request;
+
+# if you don't want to setup permissions the proper way, just uncomment the following PHP line
+# read http://symfony.com/doc/current/book/installation.html#configuration-and-setup for more information
+# os.umask(0o000);
+
+request = Request.createFromGlobals();
+
+env = os.getenv('PYMFONY_ENV', False);
+if not env:
+    env = 'dev';
+env = request.getParameterOption(['--env', '-e'], env);
+debug = bool(os.getenv('PYMFONY_DEBUG') != '0' and not request.hasParameterOption(['--no-debug', '']) and env != 'prod');
+
+kernel = AppKernel(env, debug);
+
+response = kernel.getCliKernel().handle(request);
+response.send();
+
+sys.exit(response.getStatusCode());

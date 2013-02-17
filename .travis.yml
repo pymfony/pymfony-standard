@@ -6,10 +6,12 @@ python:
     - "3.2"
     - "3.3"
 
+install:
+    - pip install . -r requirements.txt
+
 script:
-    - app/console hello $USER
     - app/console
-    - app/console list
+    - app/console hello Fabien
 
 notifications:
     email: false

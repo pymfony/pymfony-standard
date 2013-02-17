@@ -8,11 +8,12 @@
 """
 """
 
-from os import path;
+from os.path import dirname;
 
 from pymfony.component.kernel import Kernel;
+from pymfony.component.config.loader import LoaderInterface;
 from pymfony.bundle.framework import FrameworkBundle;
-from acme.demo_bundle import AcmeDemoBundle;
+import acme;
 
 class AppKernel(Kernel):
     def registerBundles(self):
@@ -21,12 +22,13 @@ class AppKernel(Kernel):
         ];
 
         if self.getEnvironment() in ['dev', 'test']:
-            bundles.append(AcmeDemoBundle());
+            bundles.append(acme.demo_bundle.AcmeDemoBundle());
 
         return bundles;
 
     def registerContainerConfiguration(self, loader):
+        assert isinstance(loader, LoaderInterface)
         loader.load("{0}/Resources/config/config_{1}.json".format(
-            path.dirname(__file__),
+            dirname(__file__),
             self.getEnvironment()
         ));
