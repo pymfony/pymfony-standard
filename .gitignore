@@ -1,3 +1,10 @@
+# Pymfony
+/web/bundles/
+/app/cache/*
+/app/logs/*
+/vendor/
+/virtualenv.py
+
 *.py[cod]
 
 # C extensions
@@ -27,20 +34,3 @@ pip-log.txt
 .coverage
 .tox
 nosetests.xml
-
-# Translations
-*.mo
-
-# Mr Developer
-.mr.developer.cfg
-.project
-.pydevproject
-.settings/
-
-
-# Pymfony
-/web/bundles/
-/app/cache/*
-/app/logs/*
-/vendor/
-/virtualenv.py
