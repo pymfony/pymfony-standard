@@ -16,4 +16,7 @@ def execfile(pyfile):
     f.close();
     exec(code, dict(__file__=pyfile));
 
-execfile(os.path.dirname(__file__)+"/../vendor/bin/activate_this.py");
+if os.path.sep == '\\':
+    execfile(os.path.dirname(__file__)+"/../vendor/Scripts/activate_this.py");
+else:
+    execfile(os.path.dirname(__file__)+"/../vendor/bin/activate_this.py");
