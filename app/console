@@ -48,7 +48,7 @@ debug = bool(os.getenv('PYMFONY_DEBUG') != '0' and not request.hasParameterOptio
 
 kernel = AppKernel(env, debug);
 
-response = kernel.getCliKernel().handle(request);
+response = kernel.getConsoleKernel().handle(request);
 response.send();
 
 sys.exit(response.getStatusCode());

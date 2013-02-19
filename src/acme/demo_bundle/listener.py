@@ -9,7 +9,7 @@
 """
 
 from pymfony.component.dependency.interface import ContainerInterface
-from pymfony.component.clikernel.event import GetResponseEvent
+from pymfony.component.console_kernel.event import GetResponseEvent
 
 class ControllerListener():
     def __init__(self, container):

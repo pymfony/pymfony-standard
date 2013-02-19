@@ -12,7 +12,7 @@ from os.path import dirname;
 
 from pymfony.component.kernel import Kernel;
 from pymfony.component.config.loader import LoaderInterface;
-from pymfony.bundle.framework import FrameworkBundle;
+from pymfony.bundle.framework_bundle import FrameworkBundle;
 import acme;
 
 class AppKernel(Kernel):

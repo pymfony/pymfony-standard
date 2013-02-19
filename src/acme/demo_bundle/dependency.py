@@ -33,7 +33,7 @@ class AcmeDemoExtension(Extension):
 
         commands['hello'] = {
             "_description": "Say hello",
-            "_controller": "@AcmeDemoBundle:Demo:hello",
+            "_controller": "AcmeDemoBundle:Demo:hello",
             "_definition": InputDefinition([
                 InputArgument("name", InputArgument.OPTIONAL, "set your name", "fabien"),
                 InputOption("--time", "-t", InputOption.VALUE_NONE, "show the current timestamp time is it")

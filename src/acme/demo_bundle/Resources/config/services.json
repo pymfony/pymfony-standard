@@ -12,7 +12,7 @@
             [
                 {
                     "name": "kernel.event_listener",
-                    "event": "cli_kernel.request",
+                    "event": "console_kernel.request",
                     "method": "onKernelRequest"
                 }
             ]
