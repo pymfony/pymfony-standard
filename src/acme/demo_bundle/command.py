@@ -16,7 +16,7 @@ from pymfony.component.console import Response
 from pymfony.component.dependency import ContainerAware
 from pymfony.component.console import Request
 
-class DemoController(ContainerAware):
+class DemoCommand(ContainerAware):
     def helloAction(self, request):
         assert isinstance(request, Request);
 
