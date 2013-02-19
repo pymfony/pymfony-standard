@@ -3,21 +3,40 @@
 
 import sys;
 import os;
-
-def require(pyfile):
-    f = open(pyfile);
-    code = compile(f.read(), pyfile, 'exec');
-    f.close();
-    exec(code, dict(__file__=pyfile));
-
-require(os.path.dirname(__file__)+"/../vendor/bin/activate_this.py");
-
-from app_kernel import AppKernel;
-from pymfony.component.console import Request;
-
 # if you don't want to setup permissions the proper way, just uncomment the following PHP line
 # read http://symfony.com/doc/current/book/installation.html#configuration-and-setup for more information
 # os.umask(0o000);
+
+if sys.version_info[0] == 2:
+    import imp;
+    def load_source(modulename, filename):
+        return imp.load_source(modulename, filename);
+else:
+    import importlib;
+    def load_source(modulename, filename):
+        return importlib.machinery.SourceFileLoader(modulename, filename).load_module();
+
+def require(filename, localVars = locals()):
+    module = load_source('', filename);
+    moduleVars = dir(module);
+    for varname in moduleVars:
+        if not varname.startswith('__') and not varname.endswith('__'):
+            localVars[varname] = getattr(module, varname);
+    if '__included_files__' not in localVars:
+        localVars['__included_files__'] = list();
+    localVars['__included_files__'].append(filename);
+
+def require_once(filename, localVars = locals()):
+    if '__included_files__' in localVars:
+        if filename in localVars['__included_files__']:
+            return;
+    return require(filename, localVars);
+
+require_once(os.path.dirname(__file__)+"/bootstrap.py");
+require_once(os.path.dirname(__file__)+"/app_kernel.py");
+
+from pymfony.component.console import Request;
+
 
 request = Request.createFromGlobals();
 
