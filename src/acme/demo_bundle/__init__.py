@@ -21,10 +21,10 @@ class AcmeDemoBundle(Bundle):
 
     def boot(self):
 
-        route = Route('hello', InputDefinition([
+        route = Route('hello', "", [
             InputArgument("name", InputArgument.OPTIONAL, "Set your name", "Fabien"),
-            InputOption("--time", "-t", InputOption.VALUE_NONE, "Show the current timestamp time is it")
-        ]));
+            InputOption("--time", "-t", InputOption.VALUE_NONE, "Show the current timestamp time is it"),
+        ]);
         route.setDefault('_controller', "AcmeDemoBundle:Demo:hello");
         route.setDescription("Say hello");
 
