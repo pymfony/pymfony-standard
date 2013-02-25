@@ -14,19 +14,16 @@ import time
 
 from pymfony.component.console import Response
 from pymfony.component.dependency import ContainerAware
-from pymfony.component.console import Request
 
 class DemoCommand(ContainerAware):
-    def helloAction(self, request):
-        assert isinstance(request, Request);
+    def helloAction(self, name, _o_time):
 
         clock = "";
 
-        if request.getOption('time'):
+        if _o_time:
             clock = "{0}: ".format(time.time());
-
 
         return Response("{0}Hello <info>{1}</info>!".format(
             clock,
-            request.getArgument('name'),
+            name,
         ));
