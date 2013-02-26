@@ -1,0 +1,5 @@
+{
+    "acme_demo":{
+        "resource": "@AcmeDemoBundle/Resources/config/commands.json"
+    }
+}

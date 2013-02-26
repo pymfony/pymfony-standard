@@ -1,0 +1,25 @@
+{
+    "acme_demo_hello": {
+        "path": "hello",
+        "description": "Say hello",
+        "defaults": {
+             "_controller": "AcmeDemoBundle:Demo:hello",
+             "name": "Fabien"
+        },
+        "definition":{
+            "arguments":[
+                {
+                    "name": "name",
+                    "description": "Set your name"
+                }
+            ],
+            "options":[
+                {
+                    "name": "time",
+                    "shortcut": "t",
+                    "description": "Show the current timestamp time is it"
+                }
+            ]
+        }
+    }
+}
