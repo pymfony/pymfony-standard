@@ -9,6 +9,9 @@
 """
 
 import os;
+import sys;
+
+__DIR__ = os.path.dirname(os.path.abspath(__file__));
 
 def execfile(pyfile):
     f = open(pyfile);
@@ -16,7 +19,7 @@ def execfile(pyfile):
     f.close();
     exec(code, dict(__file__=pyfile));
 
-if os.path.sep == '\\':
-    execfile(os.path.dirname(__file__)+"/../vendor/Scripts/activate_this.py");
+if sys.platform == 'win32': # @see: virtualenv.is_win
+    execfile(__DIR__ + "/../vendor/Scripts/activate_this.py");
 else:
-    execfile(os.path.dirname(__file__)+"/../vendor/bin/activate_this.py");
+    execfile(__DIR__ + "/../vendor/bin/activate_this.py");

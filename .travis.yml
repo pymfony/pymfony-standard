@@ -10,12 +10,11 @@ python:
 matrix:
     allow_failures:
         - python: "pypy"
-        - python: "3.2"
 
 before_script:
     - curl -s https://raw.github.com/pypa/virtualenv/master/virtualenv.py | python - -q vendor
-    - vendor/bin/pip install -q -r requirements.txt
-    - vendor/bin/python setup.py install -q
+    - vendor/bin/pip -q install -r requirements.txt
+    - vendor/bin/python setup.py -q install
 
 script:
     - app/console hello Fabien

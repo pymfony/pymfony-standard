@@ -7,39 +7,19 @@ import os;
 # read http://symfony.com/doc/current/book/installation.html#configuration-and-setup for more information
 # os.umask(0o000);
 
-if sys.version_info[0] < 3:
+if sys.version_info < (3, 3):
     import imp;
-    def load_source(modulename, filename):
+    def load_file(filename, modulename=''):
         return imp.load_source(modulename, filename);
-elif sys.version_info[0] == 3 and sys.version_info[1] < 3:
-    from importlib.machinery import PathFinder;
-    def load_source(modulename, filename):
-        moduleName = os.path.basename(filename).split('.')[0];
-        return PathFinder.find_module(moduleName, [os.path.dirname(filename)]).load_module();
 else:
     from importlib.machinery import SourceFileLoader;
-    def load_source(modulename, filename):
+    def load_file(filename, modulename=''):
         return SourceFileLoader(modulename, filename).load_module();
 
+__DIR__ = os.path.dirname(os.path.abspath(__file__));
 
-def require(filename, localVars = locals()):
-    module = load_source('', filename);
-    moduleVars = dir(module);
-    for varname in moduleVars:
-        if not varname.startswith('__') and not varname.endswith('__'):
-            localVars[varname] = getattr(module, varname);
-    if '__included_files__' not in localVars:
-        localVars['__included_files__'] = list();
-    localVars['__included_files__'].append(filename);
-
-def require_once(filename, localVars = locals()):
-    if '__included_files__' in localVars:
-        if filename in localVars['__included_files__']:
-            return;
-    return require(filename, localVars);
-
-require_once(os.path.dirname(__file__)+"/bootstrap.py");
-require_once(os.path.dirname(__file__)+"/app_kernel.py");
+load_file(__DIR__ + "/bootstrap.py");
+AppKernel = load_file(__DIR__ + "/app_kernel.py").AppKernel;
 
 from pymfony.component.console import Request;
 
