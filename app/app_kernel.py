@@ -5,15 +5,15 @@
 #
 # For the full copyright and license information, please view the LICENSE
 # file that was distributed with this source code.
-"""
-"""
-
 from os.path import dirname;
 
 from pymfony.component.kernel import Kernel;
 from pymfony.component.config.loader import LoaderInterface;
 from pymfony.bundle.framework_bundle import FrameworkBundle;
-import acme;
+from acme.demo_bundle import AcmeDemoBundle;
+
+"""
+"""
 
 class AppKernel(Kernel):
     def registerBundles(self):
@@ -22,7 +22,7 @@ class AppKernel(Kernel):
         ];
 
         if self.getEnvironment() in ['dev', 'test']:
-            bundles.append(acme.demo_bundle.AcmeDemoBundle());
+            bundles.append(AcmeDemoBundle());
 
         return bundles;
 

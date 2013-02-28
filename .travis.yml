@@ -8,9 +8,7 @@ python:
     - "pypy"
 
 before_script:
-    - curl -s https://raw.github.com/pypa/virtualenv/master/virtualenv.py | python - vendor
-    - vendor/bin/pip install -r requirements.txt
-    - vendor/bin/python setup.py install
+    - python setup.py -q install
 
 script:
     - app/console hello Fabien

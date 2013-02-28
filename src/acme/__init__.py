@@ -1,4 +1,3 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 # This file is part of the pymfony package.
 #
@@ -8,5 +7,3 @@
 # file that was distributed with this source code.
 """
 """
-
-from acme import demo_bundle;

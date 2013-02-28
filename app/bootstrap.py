@@ -14,6 +14,8 @@ import sys;
 __DIR__ = os.path.dirname(os.path.abspath(__file__));
 
 def execfile(pyfile):
+    if not os.path.exists(pyfile):
+        return;
     f = open(pyfile);
     code = compile(f.read(), pyfile, 'exec');
     f.close();
