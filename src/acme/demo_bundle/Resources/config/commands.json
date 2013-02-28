@@ -7,19 +7,17 @@
              "name": "Fabien"
         },
         "definition":{
-            "arguments":[
-                {
-                    "name": "name",
+            "arguments":{
+                "name":{
                     "description": "Set your name"
                 }
-            ],
-            "options":[
-                {
-                    "name": "time",
+            },
+            "options":{
+                "time":{
                     "shortcut": "t",
                     "description": "Show the current timestamp time is it"
                 }
-            ]
+            }
         }
     }
 }
