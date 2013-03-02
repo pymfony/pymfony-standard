@@ -7,9 +7,6 @@ python:
     - "3.3"
     - "pypy"
 
-before_script:
-    - python setup.py -q install
-
 script:
     - app/console hello Fabien
 

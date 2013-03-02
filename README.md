@@ -26,7 +26,7 @@ Edition and unpack it somewhere.
 Go to the Pymfony Standard Edition root directory (e.g. cd path/to/pymfony-standard) and run the following commands:
 
     python virtualenv.py vendor
-    vendor/bin/pip install . -r requirements.txt
+    vendor/bin/pip install -r requirements.txt
 
 2) Running the Demo Application
 -------------------------------

@@ -25,3 +25,5 @@ if sys.platform == 'win32': # @see: virtualenv.is_win
     execfile(__DIR__ + "/../vendor/Scripts/activate_this.py");
 else:
     execfile(__DIR__ + "/../vendor/bin/activate_this.py");
+
+sys.path.insert(0, __DIR__ + "/../src");
