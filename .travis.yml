@@ -9,6 +9,9 @@ python:
 
 script:
     - app/console hello Fabien
+    - contrib/build-standalone
+    - contrib/build/console hello Fabien
+ 
 
 notifications:
     email: false

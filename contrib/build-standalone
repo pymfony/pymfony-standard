@@ -1,0 +1,71 @@
+#!/usr/bin/env python
+
+import os
+import sys
+from packager import generate_script
+
+if sys.version_info < (3, 3):
+    import imp;
+    def load_file(filename, modulename=''):
+        return imp.load_source(modulename, filename);
+else:
+    from importlib.machinery import SourceFileLoader;
+    def load_file(filename, modulename=''):
+        return SourceFileLoader(modulename, filename).load_module();
+
+__DIR__ = os.path.dirname(os.path.abspath(__file__));
+
+load_file(__DIR__ + "/../app/bootstrap.py");
+sys.path.insert(0, __DIR__ + "/..");
+
+build_dir = os.path.join(__DIR__, 'build');
+file_name = os.path.join(build_dir, 'console');
+
+entry = """
+from app.app_kernel import AppKernel;
+from pymfony.component.console import Request;
+
+request = Request.createFromGlobals();
+
+env = os.getenv('PYMFONY_ENV', False);
+if not env:
+    env = 'dev';
+env = request.getParameterOption(['--env', '-e'], env);
+debug = bool(os.getenv('PYMFONY_DEBUG') != '0' and not request.hasParameterOption(['--no-debug', '']) and env != 'prod');
+
+kernel = AppKernel(env, debug);
+
+response = kernel.getConsoleKernel().handle(request);
+response.send();
+
+sys.exit(response.getStatusCode());
+"""
+
+def find_packages():
+    return [
+        'pymfony',
+        'acme',
+        'app',
+    ];
+
+def main():
+    sys.stdout.write("Creating standalone console...");
+    script = generate_script(entry, find_packages());
+    if not os.path.isdir(build_dir):
+        os.makedirs(build_dir);
+    f = open(file_name, 'w');
+    try:
+        f.write(script);
+    finally:
+        f.close();
+    sys.stdout.write('done.\n');
+    if hasattr(os, 'chmod'):
+        oldmode = os.stat(file_name).st_mode & 0o777;
+        newmode = (oldmode | 0o555) & 0o777;
+        os.chmod(file_name, newmode);
+        sys.stdout.write('Made resulting file {0} executable.\n\n'.format(
+            file_name
+        ));
+
+if __name__ == '__main__':
+    main();
