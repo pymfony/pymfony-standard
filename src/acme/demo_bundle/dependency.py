@@ -5,19 +5,19 @@
 #
 # For the full copyright and license information, please view the LICENSE
 # file that was distributed with this source code.
-"""
-"""
-
 from os.path import dirname;
 
-from pymfony.component.kernel.dependency import Extension
-from pymfony.component.dependency.loader import JsonFileLoader
-from pymfony.component.config import FileLocator
+from pymfony.component.kernel.dependency import Extension;
+from pymfony.component.dependency.loader import YamlFileLoader;
+from pymfony.component.config import FileLocator;
+
+"""
+"""
 
 class AcmeDemoExtension(Extension):
     def load(self, configs, container):
-        loader = JsonFileLoader(container, FileLocator(dirname(__file__)+'/Resources/config'))
-        loader.load("services.json");
+        loader = YamlFileLoader(container, FileLocator(dirname(__file__)+'/Resources/config'))
+        loader.load("services.yml");
 
 
     def getAlias(self):

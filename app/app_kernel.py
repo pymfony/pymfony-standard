@@ -26,9 +26,11 @@ class AppKernel(Kernel):
 
         return bundles;
 
+
     def registerContainerConfiguration(self, loader):
-        assert isinstance(loader, LoaderInterface)
-        loader.load("{0}/Resources/config/config_{1}.json".format(
+        assert isinstance(loader, LoaderInterface);
+
+        loader.load("{0}/Resources/config/config_{1}.yml".format(
             dirname(__file__),
             self.getEnvironment()
         ));

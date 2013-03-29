@@ -1,8 +1,0 @@
-{
-    "acme_demo":{
-        "resource": "@AcmeDemoBundle/Resources/config/commands.json"
-    },
-    "_main":{
-        "resource": "commands.json"
-    }
-}

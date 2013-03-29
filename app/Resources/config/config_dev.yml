@@ -1,0 +1,7 @@
+imports:
+    - { resource: config.yml }
+
+framework:
+    console:
+        router:
+            resource: %kernel.root_dir%/Resources/config/commands_dev.yml

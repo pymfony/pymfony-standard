@@ -1,0 +1,7 @@
+services:
+    acme.demo.listener:
+        class: acme.demo_bundle.listener.ControllerListener
+        tags:
+            - { name: kernel.event_listener, event: console_kernel.request, method: onKernelRequest }
+        arguments:
+            - "@service_container"
