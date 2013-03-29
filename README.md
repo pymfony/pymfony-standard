@@ -50,6 +50,8 @@ playing with it, you can remove it by following these steps:
 
   * delete the `src/acme` directory;
 
+  * remove the command entries referencing AcmeBundle in `app/Resources/config/commands_dev.yml`;
+
   * remove the AcmeBundle from the registered bundles in `app/app_kernel.py`;
 
 
@@ -65,7 +67,7 @@ It comes pre-configured with the following bundles:
   * **AcmeDemoBundle** (in dev/test env) - A demo bundle with some example
     code
 
-
+Enjoy!
 
 [0]: https://travis-ci.org/alquerci/pymfony-standard.png?branch=master
 [1]: https://travis-ci.org/alquerci/pymfony-standard
