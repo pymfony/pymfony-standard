@@ -28,7 +28,7 @@ setup(
     package_data={'': ["Resources/*/*.*"]},
     author="Alexandre Quercia",
     author_email="alquerci@email.com",
-    url="http://github.com/alquerci/pymfony-standard",
+    url="http://github.com/pymfony/pymfony-standard",
     description='The "Pymfony Standard Edition" distribution',
     long_description=long_description,
     license="MIT",

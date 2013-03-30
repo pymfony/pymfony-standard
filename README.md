@@ -69,7 +69,7 @@ It comes pre-configured with the following bundles:
 
 Enjoy!
 
-[0]: https://travis-ci.org/alquerci/pymfony-standard.png?branch=master
-[1]: https://travis-ci.org/alquerci/pymfony-standard
+[0]: https://travis-ci.org/pymfony/pymfony-standard.png?branch=master
+[1]: https://travis-ci.org/pymfony/pymfony-standard
 [2]: http://www.virtualenv.org
-[3]: https://github.com/alquerci/pymfony-standard/archive/master.zip
+[3]: https://github.com/pymfony/pymfony-standard/archive/master.zip
