@@ -11,7 +11,7 @@
 import os;
 import sys;
 
-__DIR__ = os.path.dirname(os.path.abspath(__file__));
+__DIR__ = os.path.dirname(os.path.realpath(os.path.abspath(__file__)));
 
 def execfile(pyfile):
     if not os.path.exists(pyfile):

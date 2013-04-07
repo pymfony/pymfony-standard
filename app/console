@@ -16,7 +16,7 @@ else:
     def load_file(filename, modulename=''):
         return SourceFileLoader(modulename, filename).load_module();
 
-__DIR__ = os.path.dirname(os.path.abspath(__file__));
+__DIR__ = os.path.dirname(os.path.realpath(os.path.abspath(__file__)));
 
 load_file(__DIR__ + "/bootstrap.py");
 AppKernel = load_file(__DIR__ + "/app_kernel.py").AppKernel;
