@@ -1,1 +1,1 @@
-git+https://github.com/pymfony/pymfony.git@master#egg=pymfony
+git+https://github.com/pymfony/pymfony.git@975715de0b956f0d27ee5bf7fb8c61d53955b1e4#egg=pymfony
